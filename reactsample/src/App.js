@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import Timer from './Timer';
 import Login from './Login';
+import PersonSearchPanel from './PersonSearchPanel';
 
 class App extends Component {
 
@@ -19,8 +20,10 @@ class App extends Component {
 
     render() {
         let welcomeMessage;
+        let personSearchPanel;
         if (this.state.isLoggedIn) {
             welcomeMessage = <div>{'Welcome ' + this.props.name}</div>;
+            personSearchPanel = <PersonSearchPanel />;
         }
 
         return (
@@ -32,6 +35,7 @@ class App extends Component {
                     <Timer />
                     <Login isLoggedIn={this.state.isLoggedIn} onChange={this.onLoginChange} />
                     {welcomeMessage}
+                    {personSearchPanel}
                 </main>
             </div>
         );
