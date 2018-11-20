@@ -5,7 +5,24 @@ import Timer from './Timer';
 import Login from './Login';
 
 class App extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            isLoggedIn: false
+        }
+    }
+
+    onLoginChange = (e) => {
+        this.setState({isLoggedIn: !this.state.isLoggedIn});
+    }
+
     render() {
+        let welcomeMessage;
+        if (this.state.isLoggedIn) {
+            welcomeMessage = <div>{'Welcome ' + this.props.name}</div>;
+        }
+
         return (
             <div className="App">
                 <header className="App-header">
@@ -13,7 +30,8 @@ class App extends Component {
                 </header>
                 <main>
                     <Timer />
-                    <Login name='Markus' />
+                    <Login isLoggedIn={this.state.isLoggedIn} onChange={this.onLoginChange} />
+                    {welcomeMessage}
                 </main>
             </div>
         );
