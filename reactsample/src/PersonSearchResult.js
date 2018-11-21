@@ -26,14 +26,14 @@ class PersonSearchResult extends React.Component {
             return <PersonRow key={person.id} person={person} />;
         })
         return (
-            <table>
+            <Table hoverable="true">
                 <thead>
                 <PersonHeader />
                 </thead>
                 <tbody>
                 {rows}
                 </tbody>
-            </table>
+            </Table>
         )
     }
 }
